@@ -5,6 +5,8 @@ edition = "2024"
 description = "Byte-buffer primitives for the `Bytes` scalar type (8 FFI atoms)."
 license = "MIT"
 repository = "https://github.com/handl-lang/lib-bytes"
+readme = "README.md"
+homepage = "https://github.com/handl-lang/lib-bytes"
 
 [dependencies]
 handl-value = { git = "https://github.com/handl-lang/kernel", branch = "main" }
