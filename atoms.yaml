@@ -1,0 +1,39 @@
+# lib-bytes atom spec (P-013/T-151) — Bytes ops — native impls in the lib-bytes crate (`bytes_op_registry`); impl keys are the `handle ... with` hints (rust_ prefix dropped, matching the math/proc convention).
+# `sig` = handl signature (~> canonical), `impl` = key for the
+# module's impl table, `total` replaces `guarantee: True` decl
+# clauses. Generated from the cap/op/handle triples in
+# src/index.hnl.
+module: bytes
+atoms:
+  - name: bytes.from_list
+    sig: "(List Int) ~> Bytes"
+    impl: bytes_from_list
+    total: true
+  - name: bytes.to_list
+    sig: "Bytes ~> (List Int)"
+    impl: bytes_to_list
+    total: true
+  - name: bytes.concat
+    sig: "(Bytes * Bytes) ~> Bytes"
+    impl: bytes_concat
+    total: true
+  - name: bytes.slice
+    sig: "(Bytes * Int * Int) ~> Bytes"
+    impl: bytes_slice
+    total: true
+  - name: bytes.len
+    sig: "Bytes ~> Int"
+    impl: bytes_len
+    total: true
+  - name: bytes.at
+    sig: "(Bytes * Int) ~> Int"
+    impl: bytes_at
+    total: true
+  - name: bytes.utf8_encode
+    sig: "String ~> Bytes"
+    impl: bytes_utf8_encode
+    total: true
+  - name: bytes.utf8_decode
+    sig: "Bytes ~> String"
+    impl: bytes_utf8_decode
+    total: true
