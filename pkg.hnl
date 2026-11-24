@@ -1,0 +1,12 @@
+-- lib-bytes: the `bytes` module — byte-buffer primitives for the
+-- `Bytes` scalar type. Transitional layout: the interface is
+-- `src/index.hnl` (cap/op declarations, ADR-0077/ADR-0160); the
+-- implementations are native `op` atoms in plugin-lib-stdlib.
+{
+  modules: ["bytes"],
+  name: "bytes",
+  description: "Byte-buffer primitives for the Bytes scalar type — from_list/to_list, concat, slice, len, at, UTF-8 coding.",
+  license: "MIT",
+  keywords: ["bytes", "buffer", "utf8", "stdlib", "handl"],
+  homepage: "https://github.com/handl-lang/lib-bytes",
+}
