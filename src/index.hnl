@@ -37,21 +37,21 @@ cap "bytes.len"
 cap "bytes.at"
 cap "bytes.utf8_encode"
 cap "bytes.utf8_decode"
-op "bytes.from_list" : (List Int) -> Bytes
+op "bytes.from_list" : (List Int) ~> Bytes
   guarantee: True
-op "bytes.to_list" : Bytes -> (List Int)
+op "bytes.to_list" : Bytes ~> (List Int)
   guarantee: True
-op "bytes.concat" : (Bytes * Bytes) -> Bytes
+op "bytes.concat" : (Bytes * Bytes) ~> Bytes
   guarantee: True
-op "bytes.slice" : (Bytes * Int * Int) -> Bytes
+op "bytes.slice" : (Bytes * Int * Int) ~> Bytes
   guarantee: True
-op "bytes.len" : Bytes -> Int
+op "bytes.len" : Bytes ~> Int
   guarantee: True
-op "bytes.at" : (Bytes * Int) -> Int
+op "bytes.at" : (Bytes * Int) ~> Int
   guarantee: True
-op "bytes.utf8_encode" : String -> Bytes
+op "bytes.utf8_encode" : String ~> Bytes
   guarantee: True
-op "bytes.utf8_decode" : Bytes -> String
+op "bytes.utf8_decode" : Bytes ~> String
   guarantee: True
 handle "bytes.from_list" with rust_bytes_from_list
 handle "bytes.to_list" with rust_bytes_to_list
