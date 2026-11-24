@@ -1,4 +1,4 @@
-from "./index" import * as bytes
+from "bytes" import * as bytes
 
 test_bytes_roundtrip := assert bytes.to_list(bytes.from_list([104, 105])) == [104, 105]
 
