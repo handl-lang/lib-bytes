@@ -1,6 +1,6 @@
 --- bytes -- byte-buffer primitives for the `Bytes` scalar type.
 ---
---- Single source of truth for the `bytes` stdlib interface: 8 functions
+--- Documentation surface for the `bytes` module: 8 functions
 --- covering construction from lists of ints, projection back to lists,
 --- concatenation, slicing, length, indexing, and UTF-8 coding. `Bytes` is
 --- the contiguous byte-buffer value type declared in `value_types.yaml`
@@ -10,11 +10,13 @@
 ---
 --- All 8 functions are FFI atoms: `Bytes` has no literal syntax and no
 --- eval-vocabulary constructor, so construction, indexing, slicing, and
---- UTF-8 coding cannot be expressed as pure handl arrows. The
---- `op`/`handl` declaration form (ADR-0077 Phase 2) declares the
---- interface; the Rust `Function` impls in
---- `plugin-lib-stdlib::ops::bytes` provide the logic and are registered
---- in an `OpRegistry` that dispatches each `op` to its native impl.
+--- UTF-8 coding cannot be expressed as pure handl arrows. The atom spec
+--- lives in `atoms.yaml` (P-013/T-151) — name/sig/impl per op — and the
+--- Rust `Op` impls are in `src/ops.rs`; the host's spec-driven
+--- `bytes_impls()` table (`plugin-lib-stdlib` `ops/kernel_impls.rs`,
+--- adapting this crate's `pub` impls) is what the `bytes` `ModuleSpec`
+--- consumes. `bytes_op_registry()` in `src/ops.rs` stays for consumers
+--- that still use it directly.
 ---
 --- `bytes.slice(b, offset, len)` clamps the window to the buffer (like
 --- `str.slice`); `bytes.at(b, i)` errors when `i` is out of bounds (like
