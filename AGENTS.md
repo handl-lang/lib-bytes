@@ -7,17 +7,19 @@
 
 | path | role |
 | --- | --- |
-| `src/index.hnl` | the interface — `cap`/`op` declarations (ADR-0077/ADR-0160) |
+| `src/index.hnl` | the interface — documentation surface; atom spec in `atoms.yaml` (P-013/T-151) |
 | `src/bytes.test.hnl` | `.hnl` tests |
-| `src/lib.rs`, `src/ops.rs` | Rust atoms / transitional impl crate |
+| `src/lib.rs`, `src/ops.rs` | Rust `Op` impls + `bytes_op_registry()` |
 | `atoms.yaml`, `Cargo.toml`, `xtask/` | atom registry + Rust crate + gate |
 | `pkg.hnl`, `scripts/hnl-gate.sh` | manifest + `.hnl` gate |
 | `workflows/gate.yaml` | CI — shared `handl-gates` campaign |
 
 ## Contract
 
-- Transitional layout: the interface is `.hnl`; implementations are
-  native `op` atoms (plugin-lib-stdlib side).
+- Spec-driven layout: `atoms.yaml` is the spec (name/sig/impl per
+  op); the Rust `Op` impls live in this crate (`src/ops.rs`) and the
+  host's `bytes_impls()` table (`plugin-lib-stdlib`
+  `ops/kernel_impls.rs`) adapts them for the `bytes` `ModuleSpec`.
 - Deps resolve from git — a plain clone test-runs as-is, no sibling
   checkouts needed.
 
